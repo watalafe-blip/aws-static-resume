@@ -1,0 +1,156 @@
+/* Ka Yi Lo - resume. Clean, single-file stylesheet. */
+:root {
+  --ink: #14213d;
+  --text: #3a4256;
+  --muted: #6b7489;
+  --line: #e4e7ee;
+  --accent: #2f5bea;
+  --accent-soft: #eef2fe;
+  --bg: #f5f6f9;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.clear { clear: both; }
+
+#cv {
+  max-width: 860px;
+  margin: 48px auto;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(20, 33, 61, .04), 0 12px 32px rgba(20, 33, 61, .06);
+  overflow: hidden;
+}
+
+/* Header */
+.mainDetails {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 40px 48px;
+  background: var(--ink);
+  color: #fff;
+}
+
+#headshot img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, .25);
+  display: block;
+}
+
+#name { flex: 1; }
+#name h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+#name h4 {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #c9d3f5;
+}
+
+#contactDetails ul { list-style: none; font-size: .88rem; line-height: 1.8; }
+#contactDetails a { color: #fff; }
+#contactDetails li { color: #c9d3f5; }
+
+/* Body */
+#mainArea { padding: 8px 48px 40px; }
+
+section {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-child { border-bottom: none; }
+
+.sectionTitle h1 {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 4px;
+}
+
+.sectionContent article { margin-bottom: 22px; }
+.sectionContent article:last-child { margin-bottom: 0; }
+
+.sectionContent h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.subDetails {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 2px 0 6px;
+}
+
+p { font-size: .97rem; }
+
+/* Skills as chips */
+.keySkills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.keySkills li {
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: .87rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* Small "built on AWS" note in the footer */
+.footer {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--muted);
+  padding: 0 0 40px;
+}
+
+/* Tablet and phone */
+@media (max-width: 720px) {
+  #cv { margin: 0; border-radius: 0; }
+  .mainDetails { flex-direction: column; align-items: flex-start; padding: 32px 24px; gap: 16px; }
+  #mainArea { padding: 0 24px 24px; }
+  section { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
+  #name h1 { font-size: 1.8rem; }
+}
+
+/* Print / Save as PDF */
+@media print {
+  html, body { background: #fff; }
+  #cv { box-shadow: none; margin: 0; max-width: none; border-radius: 0; }
+  .mainDetails { background: #fff; color: var(--ink); border-bottom: 2px solid var(--ink); padding: 0 0 20px; }
+  #name h4, #contactDetails li, #contactDetails a { color: var(--text); }
+  #mainArea { padding: 0; }
+  section { padding: 16px 0; break-inside: avoid; }
+  .footer { display: none; }
+}
